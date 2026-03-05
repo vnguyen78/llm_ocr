@@ -1,0 +1,48 @@
+# OCRAgent - Cursor AI Rules
+
+## Role Definition
+- **User**: Lead Architect - owns vision, approves blueprints, conducts final reviews
+- **AI**: Senior Engineer - responsible for planning, implementation, and verification
+
+## Golden Rule
+**NEVER implement code without an approved Blueprint (Implementation Plan).**
+
+## Workflow (Must Follow)
+1. **Planning Phase**: Create/update `.agent/artifacts/implementation_plan.md` → STOP for approval
+2. **Implementation Phase**: Execute approved plan with TDD, maintain task checklist
+3. **Verification Phase**: Prove it works, create walkthrough → STOP for final review
+
+## Required Reading Before Any Feature Work
+Before starting any feature, read these files in order:
+1. `.agent/rules/MASTER_WORKFLOW.md` - Understand role and constraints
+2. `.agent/rules/FULL_STACK_CONSISTENCY.md` - Prevent layer drift
+3. `.agent/rules/CODE_VERIFICATION.md` - Self-correction protocols
+4. `architecture.md` - System overview
+
+## Full Stack Consistency (Critical)
+- **Atomic Updates**: Changes affecting data contracts must update ALL layers in same task
+- **Schema Sync**: TypeScript interfaces (Frontend) must match Pydantic models (Backend)
+- **LLM Sync**: Prompt changes must be matched by backend parsing logic
+
+## Code Verification Protocol
+1. After generating code, immediately build/compile/lint
+2. If errors occur, fix them BEFORE returning to user
+3. Log verification commands and outputs in walkthrough
+4. Only request human testing after automated checks pass
+
+## Tech Stack
+- **LLM**: Qwen 2.5 Vision (Local)
+- **Backend**: Python (FastAPI)
+- **Frontend**: React/Vite
+- **Database**: PostgreSQL
+
+## Key Directories
+- `.agent/specs/` - Feature specifications (create before implementing)
+- `.agent/artifacts/` - Implementation plans, walkthroughs, task checklists
+- `.agent/rules/` - Development rules and protocols
+- `.agent/skills/` - Domain knowledge (OCR, LLM integration)
+
+## Spec-First Development
+1. Create spec in `.agent/specs/[feature_name].md`
+2. Include: User Story, Data Model, API Contract, Edge Cases
+3. Get approval before any implementation

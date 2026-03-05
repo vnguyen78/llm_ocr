@@ -1,0 +1,31 @@
+# Environments
+.env
+
+# Dependencies
+node_modules/
+venv/
+env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+sql_app.db
+*.sqlite3
+
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+.agent/
+.gemini/
+
+# Build/Dist
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
